@@ -70,14 +70,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-async function loginUser() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
+async function loginUser(username, password) {
     const response = await fetch('/api/login', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })
+    });
+
+    const data = await response.json();
+    alert(data.message);
+}
+
+async function signUpUser(username, password, email) {
+    const response = await fetch('/api/signup', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password, email })
     });
 
     const data = await response.json();
