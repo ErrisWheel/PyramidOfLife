@@ -1,9 +1,11 @@
 /* basically tong body is para sa general style ng contents */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background: linear-gradient(45deg, #7cffb3, #b4eade, #cef6cf, #fbc2eb);
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+    line-height: 1.6;
+    margin-bottom: 100px;
+    padding-bottom: 80px;
 }
 
 /* for header */
@@ -44,6 +46,8 @@ header ul li a:hover {
 }
 
 .header-content {
+    font-family: Brush Script MT, cursive;
+    font-size: 40px;
     display: flex;
     align-items: center;
     gap: 30px;
@@ -63,34 +67,6 @@ header ul li a:hover {
     justify-content: center;
 }
 
-/* folder nav bullshit 
-.nav-folder {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: white;
-    border-radius: 10px 10px 0 0;
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-folder li {
-    padding: 15px 20px;
-    background-color: #ddd;
-    border-right: 2px solid white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.nav-folder li:last-child {
-    border-right: none;
-}
-
-.nav-folder li:hover {
-    background-color: #ffcc00;
-}
-*/
 .nav-folder li a {
     text-decoration: none;
     color: black;
@@ -126,4 +102,15 @@ header ul li a:hover {
 
 .gallery img:hover {
     transform: scale(1.05);
+}
+
+#login {
+    width: 80px;
+    height: 80px;
+    background: url(https://cdn-icons-png.flaticon.com/512/6681/6681204.png);
+    background-size: cover;
+    border-radius: 50%;;
+    display: flex;
+    align-items: right;
+    justify-content: center;
 }
