@@ -20,6 +20,10 @@ export default async function handler(req, res) {
 
     const { username, password } = req.body;
 
+    if (!username || !password) {
+        return res.status(400).json({ message: "All fields are required" });
+    }
+
     try {
         const userDoc = await db.collection("users").doc(username).get();
 
@@ -29,13 +33,12 @@ export default async function handler(req, res) {
 
         const userData = userDoc.data();
 
-        if (userData.password === password) {
-            return res.status(200).json({ message: "Login successful!" });
-        } else {
+        if (userData.password !== password) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
+
+        return res.status(200).json({ message: "Login successful!" });
     } catch (error) {
-        console.error("Login error:", error);
-        return res.status(500).json({ message: "Internal Server Error" });
+        return res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
 }
