@@ -34,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
         loginForm.style.display = "none";
         signupTab.classList.add("active-tab");
         loginTab.classList.remove("active-tab");
+
+        modal.style.display = "flex";
     });
 
     // handle sign up
@@ -41,6 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         const newUser = document.getElementById("signupUsername").value;
         const newPass = document.getElementById("signupPassword").value;
+        const newEmail = document.getElementById("signupEmail").value;
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(newEmail)) {
+            message.innerHTML = "Invalid email format";
+            message.style.color = "red";
+            return;
+        }
 
         if (localStorage.getItem(newUser)) {
             message.innerHTML = "Username already exists!";
